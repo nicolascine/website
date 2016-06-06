@@ -6,13 +6,13 @@
 
         constructor($http, $scope, socket) {
             this.$http = $http;
-            this.awesomeThings = [];
+            this.awesomeTwits = [];
 
-            $http.get('/api/tweets').then(response => {
-                console.log(response.data);
-            }, (responseError) => {
-                console.log(responseError);
+            $http.get('/api/twitss').then(response => {
+              this.awesomeTwits = response.data;
+              socket.syncUpdates('twit', this.awesomeTwits);
             });
+
 
             $scope.$on('$destroy', function() {
                 socket.unsyncUpdates('thing');

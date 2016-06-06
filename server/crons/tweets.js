@@ -59,13 +59,7 @@ function saveTwit(tweet) {
 }
 
 var stream = T.stream('statuses/filter', {
-    track: [
-        '#dataviz', 
-        'datavis', 
-        'data visualization', 
-        'visualizacion de datos', 
-        '#datavis'
-    ]
+    track: '#dataviz'
 })
 
 stream.on('tweet', function(tweet) {
