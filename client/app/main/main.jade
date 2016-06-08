@@ -61,5 +61,6 @@ navbar
           tbody
             tr(ng-repeat='twit in main.awesomeTwits')
               td {{ $index }} 
-              td {{twit.text}}
+              td 
+                p(ng-bind-html='twit.text | twitterLinks')
 footer

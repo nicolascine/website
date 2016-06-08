@@ -7,12 +7,11 @@
         constructor($http, $scope, socket) {
             this.$http = $http;
             this.awesomeTwits = [];
-
+            this.twitterLinks
             $http.get('/api/twitss').then(response => {
-              this.awesomeTwits = response.data;
-              socket.syncUpdates('twit', this.awesomeTwits);
+                this.awesomeTwits = response.data;
+                socket.syncUpdates('twit', this.awesomeTwits);
             });
-
 
             $scope.$on('$destroy', function() {
                 socket.unsyncUpdates('thing');

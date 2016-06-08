@@ -7,7 +7,8 @@ angular.module('websiteApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'twitterLinks'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
