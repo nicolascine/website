@@ -7,22 +7,24 @@
         constructor($http, $scope, socket) {
             this.$http = $http;
             this.awesomeTwits = [];
-            this.twitterLinks
-            $http.get('/api/twitss').then(response => {
-                this.awesomeTwits = response.data;
-                socket.syncUpdates('twit', this.awesomeTwits);
-            });
-
+            this.socket = socket;
+            this.currentFirstTwit = null;
             $scope.$on('$destroy', function() {
                 socket.unsyncUpdates('thing');
             });
+
+            // get first list of twits ~
+            this.getTwits();
         }
 
-        addThing() {
-            if (this.newThing) {
-                this.$http.post('/api/things', { name: this.newThing });
-                this.newThing = '';
-            }
+        getTwits() {
+            this.$http({
+                url: '/api/twitss',
+                method: 'GET',
+                params: { currentFirstTwit: this.currentFirstTwit }
+            }).then(response => {
+                this.awesomeTwits = response.data;
+            });
         }
 
         deleteThing(thing) {
