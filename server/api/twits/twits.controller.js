@@ -61,9 +61,11 @@ function removeEntity(res) {
 
 // Gets a list of Twitss
 export function index(req, res) {
-    //console.log( req.query.currentFirstTwit )
-    var limit = typeof req.query.currentFirstTwit === 'undefined' ? 0 : parseInt(req.query.currentFirstTwit, 10);
-    Twits.find().limit(limit)
+    var limit = parseInt(req.query.twitLimit, 10);
+    var limitTwit = typeof limit === 'undefined' ? 0 : limit;
+    var lastTwit = req.query.lastTwit;
+    var params = lastTwit != 0 ? { _id: { $gte: lastTwit } } : {};
+    Twits.find(params).limit(limitTwit)
         .execAsync()
         .then(responseWithResult(res))
         .catch(handleError(res));
