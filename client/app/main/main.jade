@@ -1,66 +1,12 @@
-navbar
-
-.container-fluid
-  .row
-    .col-sm-3.col-md-2.sidebar
-      ul.nav.nav-sidebar
-        li.active
-          a(href='#')
-            | Overview 
-            span.sr-only (current)
-        li
-          a(href='#') Reports
-        li
-          a(href='#') Analytics
-        li
-          a(href='#') Export
-      ul.nav.nav-sidebar
-        li
-          a(href='') Nav item
-        li
-          a(href='') Nav item again
-        li
-          a(href='') One more nav
-        li
-          a(href='') Another nav item
-        li
-          a(href='') More navigation
-      ul.nav.nav-sidebar
-        li
-          a(href='') Nav item again
-        li
-          a(href='') One more nav
-        li
-          a(href='') Another nav item
-    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-      //- h1.page-header Dashboard
-      //- .row.placeholders
-      //-   .col-xs-6.col-sm-3.placeholder
-      //-     img.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', width='200', height='200', alt='Generic placeholder thumbnail')
-      //-     h4 Label
-      //-     span.text-muted Something else
-      //-   .col-xs-6.col-sm-3.placeholder
-      //-     img.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', width='200', height='200', alt='Generic placeholder thumbnail')
-      //-     h4 Label
-      //-     span.text-muted Something else
-      //-   .col-xs-6.col-sm-3.placeholder
-      //-     img.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', width='200', height='200', alt='Generic placeholder thumbnail')
-      //-     h4 Label
-      //-     span.text-muted Something else
-      //-   .col-xs-6.col-sm-3.placeholder
-      //-     img.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', width='200', height='200', alt='Generic placeholder thumbnail')
-      //-     h4 Label
-      //-     span.text-muted Something else
-      h2.sub-header Tweets
-      .table-responsive
-        table.table.table-striped
-          thead
-            tr
-              th #
-              th Tweet
-          tbody
-            tr(ng-repeat='twit in main.awesomeTwits')
-              td {{ $index + 1 }} 
-              td 
-                p(ng-bind-html='twit.text | twitterLinks')
-footer
+div(flex-xs='', flex-gt-xs='50', layout='column', ng-repeat='twit in main.awesomeTwits')
+  md-card(md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}", md-theme-watch='')
+    md-card-title
+      md-card-title-text
+        span.md-headline {{ $index + 1 }} Card with image
+        span.md-subhead
+          p(ng-bind-html='twit.text | twitterLinks')
+      md-card-title-media
+        .md-media-lg.card-media
+    md-card-actions(layout='row', layout-align='end center')
+      md-button Action 1
+      md-button Action 2

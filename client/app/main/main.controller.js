@@ -4,7 +4,7 @@
 
     class MainController {
 
-        constructor($http, $scope, socket) {
+        constructor($http, $scope, socket, $mdSidenav) {
             this.$http = $http;
             this.awesomeTwits = [];
             this.socket = socket;
@@ -20,6 +20,12 @@
             $scope.getTwits = () => {
                 this.getTwits();
             }
+
+            $scope.toggleSidenav = (menuId) => {
+                $mdSidenav(menuId).toggle();
+            }
+
+
         }
 
         getTwits() {
