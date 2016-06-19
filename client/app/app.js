@@ -2,6 +2,7 @@
 
 angular.module('websiteApp', [
   'websiteApp.constants',
+  'ngMaterial',
   'ngCookies',
   'ngResource',
   'ngSanitize',
